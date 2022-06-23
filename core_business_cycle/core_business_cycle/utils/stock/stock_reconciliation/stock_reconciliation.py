@@ -50,6 +50,7 @@ def creating_stock_reconciliation(document,action):
                     "expense_account":ts_expence_head[e],
                     "cost_center":document.cost_center,
                     "ts_stock_entry_no":document.name,
+                    "ts_stock_key":1
                     
                 })
                 ts_stock_re_count+=1
@@ -131,7 +132,10 @@ class EmptyStockReconciliationItemsError(frappe.ValidationError): pass
 class StockReconciliation(StockController):
     def remove_items_with_no_change(self):
             """Remove items if qty or rate is not changed"""
-            # self.difference_amount = 0.0
+            if self.ts_stock_key==1:
+                pass
+            else:
+                self.difference_amount = 0.0
             def _changed(item):
                 item_dict = get_stock_balance_for(item.item_code, item.warehouse,
                     self.posting_date, self.posting_time, batch_no=item.batch_no)
@@ -152,12 +156,14 @@ class StockReconciliation(StockController):
                         item.current_serial_no = item_dict.get("serial_nos")
                         if self.purpose == "Stock Reconciliation" and not item.serial_no:
                             item.serial_no = item.current_serial_no
-
-                    # item.current_qty = item_dict.get("qty")
-                    # item.current_valuation_rate = item_dict.get("rate")
-                    # self.difference_amount += (flt(item.qty, item.precision("qty")) * \
-                    #     flt(item.valuation_rate or item_dict.get("rate"), item.precision("valuation_rate")) \
-                    #     - flt(item_dict.get("qty"), item.precision("qty")) * flt(item_dict.get("rate"), item.precision("valuation_rate")))
+                    if self.ts_stock_key==1:
+                        pass
+                    else:
+                        item.current_qty = item_dict.get("qty")
+                        item.current_valuation_rate = item_dict.get("rate")
+                        self.difference_amount += (flt(item.qty, item.precision("qty")) * \
+                            flt(item.valuation_rate or item_dict.get("rate"), item.precision("valuation_rate")) \
+                            - flt(item_dict.get("qty"), item.precision("qty")) * flt(item_dict.get("rate"), item.precision("valuation_rate")))
                     return True
 
             items = list(filter(lambda d: _changed(d), self.items))

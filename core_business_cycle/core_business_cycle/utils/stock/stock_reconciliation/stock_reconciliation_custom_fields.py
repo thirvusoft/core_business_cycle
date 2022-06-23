@@ -15,6 +15,12 @@ def stock_reconciliation_custom_field():
                     label= "Stock Entry No.",
                     options="Stock Entry"
           ),
+          dict(
+                    fieldname= "ts_stock_key",
+                    fieldtype= "Check",
+                    insert_after= "ts_stock_entry_no",
+                    label= "Stock Key",
+          ),
         ]
     }
     create_custom_fields(custom_fields)

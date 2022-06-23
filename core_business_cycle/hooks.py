@@ -104,27 +104,27 @@ override_doctype_class = {
 # }
 doc_events = {
 	"Purchase Receipt":{
-		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_journal_entry",
-					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_landed_cost_voucher"],
-		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucherremoving_journal_entry",
-		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchertotal_amount_calculator"
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_landed_cost_voucher"],
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
 	},
 	"Purchase Invoice":{
-		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_journal_entry",
-					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_landed_cost_voucher"],
-		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucherremoving_journal_entry",
-		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchertotal_amount_calculator"
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_landed_cost_voucher"],
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
 	},
 	"Stock Entry":{
-		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_journal_entry",
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
 					 "core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.creating_stock_reconciliation"],
-		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucherremoving_journal_entry",
-		"validate":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchertotal_amount_calculator"]
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"]
 	},
 	"Delivery Note":{
-		"on_submit":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchercreating_journal_entry",
-		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucherremoving_journal_entry",
-		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_vouchertotal_amount_calculator"
+		"on_submit":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
 	},
 	"Stock Reconciliation":{
 		"validate":"core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.calculating_difference_value"
