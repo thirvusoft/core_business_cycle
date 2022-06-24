@@ -29,6 +29,14 @@ app_license = "MIT"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
+doctype_js = {
+	"Delivery Note":"core_business_cycle/utils/selling/delivery_note/delivery_note.js",
+	"Sales Invoice":"core_business_cycle/utils/selling/sales_invoice/sales_invoice.js",
+	"Purchase Receipt":"core_business_cycle/utils/buying/purchase_receipt/purchase_receipt.js",
+	"Purchase Invoice":"core_business_cycle/utils/buying/purchase_invoice/purchase_invoice.js",
+	"Stock Entry":"core_business_cycle/utils/stock/stock_entry/stock_entry.js"
+	}
+
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}

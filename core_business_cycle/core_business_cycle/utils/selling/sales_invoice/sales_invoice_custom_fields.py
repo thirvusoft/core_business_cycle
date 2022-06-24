@@ -12,7 +12,7 @@ def sales_invoice_custom_field():
                     fieldname='ts_landed_cost_voucher',
                     label='Landed Cost Voucher',
                     fieldtype='Section Break', 
-                    insert_after = "posa_coupons",
+                    insert_after = "total_taxes_and_charges",
           ),
           dict(
                     fieldname= "ts_landed_cost_voucher_table",

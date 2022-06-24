@@ -20,6 +20,7 @@ def stock_reconciliation_custom_field():
                     fieldtype= "Check",
                     insert_after= "ts_stock_entry_no",
                     label= "Stock Key",
+                    hidden=1
           ),
         ]
     }
