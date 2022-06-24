@@ -29,6 +29,14 @@ app_license = "MIT"
 
 # include js in page
 # page_js = {"page" : "public/js/file.js"}
+doctype_js = {
+	"Delivery Note":"core_business_cycle/utils/selling/delivery_note/delivery_note.js",
+	"Sales Invoice":"core_business_cycle/utils/selling/sales_invoice/sales_invoice.js",
+	"Purchase Receipt":"core_business_cycle/utils/buying/purchase_receipt/purchase_receipt.js",
+	"Purchase Invoice":"core_business_cycle/utils/buying/purchase_invoice/purchase_invoice.js",
+	"Stock Entry":"core_business_cycle/utils/stock/stock_entry/stock_entry.js"
+	}
+
 
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
@@ -57,7 +65,7 @@ app_license = "MIT"
 # ------------
 
 # before_install = "core_business_cycle.install.before_install"
-# after_install = "core_business_cycle.install.after_install"
+after_install = "core_business_cycle.core_business_cycle.utils.after_install.after_install"
 
 # Uninstallation
 # ------------
@@ -87,9 +95,9 @@ app_license = "MIT"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Stock Reconciliation": "core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.StockReconciliation"
+}
 
 # Document Events
 # ---------------
@@ -102,6 +110,34 @@ app_license = "MIT"
 # 		"on_trash": "method"
 #	}
 # }
+doc_events = {
+	"Purchase Receipt":{
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_landed_cost_voucher"],
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
+	},
+	"Purchase Invoice":{
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+					 "core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_landed_cost_voucher"],
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
+	},
+	"Stock Entry":{
+		"on_submit":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+					 "core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.creating_stock_reconciliation"],
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":["core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"]
+	},
+	"Delivery Note":{
+		"on_submit":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
+	},
+	"Stock Reconciliation":{
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.calculating_difference_value"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
