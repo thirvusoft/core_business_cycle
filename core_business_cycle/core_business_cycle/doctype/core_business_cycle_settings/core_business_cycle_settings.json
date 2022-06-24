@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-06-24 10:28:10.454260",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ts_landed_cost_voucher_section",
+  "ts_delivery_note",
+  "ts_sales_invoice",
+  "ts_stock_entry",
+  "ts_column_break_5",
+  "ts_purchase_receipt",
+  "ts_purchase_invoice"
+ ],
+ "fields": [
+  {
+   "fieldname": "ts_landed_cost_voucher_section",
+   "fieldtype": "Section Break",
+   "label": "Landed Cost Voucher"
+  },
+  {
+   "default": "0",
+   "description": "Automatically Creates Journal Entry",
+   "fieldname": "ts_delivery_note",
+   "fieldtype": "Check",
+   "label": "Delivery Note"
+  },
+  {
+   "default": "0",
+   "description": "Automatically Creates Journal Entry",
+   "fieldname": "ts_sales_invoice",
+   "fieldtype": "Check",
+   "label": "Sales Invoice"
+  },
+  {
+   "default": "0",
+   "description": "Automatically Creates Journal Entry and Stock Reconciliation",
+   "fieldname": "ts_stock_entry",
+   "fieldtype": "Check",
+   "label": "Stock Entry"
+  },
+  {
+   "fieldname": "ts_column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Automatically Creates Journal Entry and Landed Cost Voucher",
+   "fieldname": "ts_purchase_receipt",
+   "fieldtype": "Check",
+   "label": "Purchase Receipt"
+  },
+  {
+   "default": "0",
+   "description": "Automatically Creates Journal Entry and Landed Cost Voucher",
+   "fieldname": "ts_purchase_invoice",
+   "fieldtype": "Check",
+   "label": "Purchase Invoice"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-06-24 11:21:49.155446",
+ "modified_by": "Administrator",
+ "module": "Core Business Cycle",
+ "name": "Core Business Cycle Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}
