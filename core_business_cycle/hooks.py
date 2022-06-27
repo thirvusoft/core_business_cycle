@@ -136,7 +136,12 @@ doc_events = {
 	},
 	"Stock Reconciliation":{
 		"validate":"core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation.calculating_difference_value"
-	}
+	},
+	"Sales Invoice":{
+		"on_submit":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.creating_journal_entry",
+		"on_cancel":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.removing_journal_entry",
+		"validate":"core_business_cycle.core_business_cycle.utils.stock.landed_cost_voucher.landed_cost_voucher.total_amount_calculator"
+	},
 }
 
 # Scheduled Tasks
