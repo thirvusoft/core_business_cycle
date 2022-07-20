@@ -13,17 +13,17 @@ def delivery_note_custom_field():
                     insert_after= "pricing_rules",
                     label= "Landed Cost Voucher",
           ),
-          dict(
-                    fieldname= "cost_center",
-                    fieldtype= "Link",
-                    insert_after= "ts_landed_cost_voucher",
-                    label= "Cost Center",
-                    options="Cost Center"
-          ),
+        #   dict(
+        #             fieldname= "cost_center",
+        #             fieldtype= "Link",
+        #             insert_after= "ts_landed_cost_voucher",
+        #             label= "Cost Center",
+        #             options="Cost Center"
+        #   ),
           dict(
                     fieldname= "ts_landed_cost_voucher_table",
                     fieldtype= "Table",
-                    insert_after= "cost_center",
+                    insert_after= "ts_landed_cost_voucher",
                     options= "TS Landed Cost Voucher",
           ),
           dict(

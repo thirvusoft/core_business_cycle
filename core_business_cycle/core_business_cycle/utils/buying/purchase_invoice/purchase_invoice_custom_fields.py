@@ -13,12 +13,16 @@ def purchase_invoice_custom_field():
                     insert_after= "taxes",
                     label= "Landed Cost Voucher",
           ),
+         dict(fieldname='type', label='Type',
+				fieldtype='Select', options='\nInclusive\nExclusive',insert_after='ts_landed_cost_voucher'),
+
           dict(
                     fieldname= "ts_landed_cost_voucher_table",
                     fieldtype= "Table",
                     insert_after= "ts_landed_cost_voucher",
                     options= "TS Landed Cost Voucher",
           ),
+
           dict(
                     fieldname= "ts_distribute_charges_based_on",
                     fieldtype= "Select",
