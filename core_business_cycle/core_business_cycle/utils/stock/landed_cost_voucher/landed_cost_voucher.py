@@ -148,39 +148,40 @@ def creating_journal_entry(document,action):
 
                               ts_creator.submit()
     else:
-        if ts_landed_cost_voucher_table:
-            for i in range(0,len(ts_landed_cost_voucher_table),1):
-                if not ts_landed_cost_voucher_table[i].ts_journal_entry:
-                    if not document.cost_center:
-                        frappe.throw('Please Select Cost Center')
-                    if(ts_landed_cost_voucher_table[i].ts_createing_je == 0):
-                        if ts_landed_cost_voucher_table[i].ts_party_type:
-                            ts_landed_cost_voucher_table[i].ts_remaining_amount_to_be_paid=ts_landed_cost_voucher_table[i].ts_expence_account
-                            ts_creator=frappe.get_doc({
-                                    "doctype":"Journal Entry",
-                                    "company":document.company,
-                                    "ts_source_doctype_name":document.doctype,
-                                    "ts_purchase_receipt_invoice_no":document.name,
-                                    "posting_date":document.posting_date,
-                                    "accounts":[{
-                                        "account":ts_landed_cost_voucher_table[i].ts_expence_account,
-                                        "credit_in_account_currency":ts_landed_cost_voucher_table[i].ts_amount,
-                                        "cost_center":document.cost_center,
-                                        
-                                    },{
-                                        "account":ts_landed_cost_voucher_table[i].ts_account,
-                                        "party_type":ts_landed_cost_voucher_table[i].ts_party_type,
-                                        "party":ts_landed_cost_voucher_table[i].ts_party_name,
-                                        "debit_in_account_currency":ts_landed_cost_voucher_table[i].ts_amount,
-                                        "reference_type":document.doctype,
-                                        "reference_name":document.name
-                                    }],
-                                })
-                            ts_creator.insert()
-                            ts_landed_cost_voucher_table[i].ts_journal_entry=ts_creator.name
-                            document.submit()
-                        else:
-                           frappe.throw("Please Select Party Type And Party Name")
+        if document.doctype == "Purchase Invoice":
+            if ts_landed_cost_voucher_table:
+                for i in range(0,len(ts_landed_cost_voucher_table),1):
+                    if not ts_landed_cost_voucher_table[i].ts_journal_entry:
+                        if not document.cost_center:
+                            frappe.throw('Please Select Cost Center')
+                        if(ts_landed_cost_voucher_table[i].ts_createing_je == 0):
+                            if ts_landed_cost_voucher_table[i].ts_party_type:
+                                ts_landed_cost_voucher_table[i].ts_remaining_amount_to_be_paid=ts_landed_cost_voucher_table[i].ts_expence_account
+                                ts_creator=frappe.get_doc({
+                                        "doctype":"Journal Entry",
+                                        "company":document.company,
+                                        "ts_source_doctype_name":document.doctype,
+                                        "ts_purchase_receipt_invoice_no":document.name,
+                                        "posting_date":document.posting_date,
+                                        "accounts":[{
+                                            "account":ts_landed_cost_voucher_table[i].ts_expence_account,
+                                            "credit_in_account_currency":ts_landed_cost_voucher_table[i].ts_amount,
+                                            "cost_center":document.cost_center,
+                                            
+                                        },{
+                                            "account":ts_landed_cost_voucher_table[i].ts_account,
+                                            "party_type":ts_landed_cost_voucher_table[i].ts_party_type,
+                                            "party":ts_landed_cost_voucher_table[i].ts_party_name,
+                                            "debit_in_account_currency":ts_landed_cost_voucher_table[i].ts_amount,
+                                            "reference_type":document.doctype,
+                                            "reference_name":document.name
+                                        }],
+                                    })
+                                ts_creator.insert()
+                                ts_landed_cost_voucher_table[i].ts_journal_entry=ts_creator.name
+                                document.submit()
+                            else:
+                                frappe.throw("Please Select Party Type And Party Name")
 
 
 def removing_journal_entry(document,action):
