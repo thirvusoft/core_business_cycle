@@ -14,7 +14,8 @@ def purchase_invoice_custom_field():
                     label= "Landed Cost Voucher",
           ),
          dict(fieldname='type', label='Type',
-				fieldtype='Select', options='\nInclusive\nExclusive',insert_after='ts_landed_cost_voucher'),
+				fieldtype='Select', options='\nInclusive\nExclusive',
+                insert_after='ts_landed_cost_voucher'),
 
           dict(
                     fieldname= "ts_landed_cost_voucher_table",
@@ -29,12 +30,16 @@ def purchase_invoice_custom_field():
                     insert_after= "ts_landed_cost_voucher_table",
                     label= "Distribute Charges Based On",
                     options= "Qty\nAmount",
+                    depends_on='eval:doc.ts_landed_cost_voucher_table',
+                    read_only=1,
           ),
           dict(
                     fieldname= "ts_total_amount",
                     fieldtype= "Currency",
                     insert_after= "ts_distribute_charges_based_on",
                     label= "Total Amount",
+                    depends_on='eval:doc.ts_landed_cost_voucher_table',
+                    read_only=1,
           ),
         ]
     }
