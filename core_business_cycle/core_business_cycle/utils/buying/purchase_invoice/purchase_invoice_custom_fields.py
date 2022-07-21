@@ -31,7 +31,7 @@ def purchase_invoice_custom_field():
                     label= "Distribute Charges Based On",
                     options= "Qty\nAmount",
                     depends_on='eval:doc.ts_landed_cost_voucher_table',
-                    read_only=1,
+                  
           ),
           dict(
                     fieldname= "ts_total_amount",
