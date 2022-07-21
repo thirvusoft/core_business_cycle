@@ -72,6 +72,8 @@ def creating_journal_entry(document,action):
                             ts_creator=frappe.get_doc({
                                     "doctype":"Journal Entry",
                                     "company":document.company,
+                                    "against_document":document.doctype,
+                                    "against_document_number":document.name,
                                     "ts_source_doctype_name":document.doctype,
                                     "ts_purchase_receipt_invoice_no":document.name,
                                     "posting_date":document.posting_date,
@@ -95,6 +97,8 @@ def creating_journal_entry(document,action):
                             ts_creator=frappe.get_doc({
                                     "doctype":"Journal Entry",
                                     "company":document.company,
+                                    "against_document":document.doctype,
+                                    "against_document_number":document.name,
                                     "ts_source_doctype_name":document.doctype,
                                     "ts_purchase_receipt_invoice_no":document.name,
                                     "posting_date":document.posting_date,
@@ -121,6 +125,8 @@ def creating_journal_entry(document,action):
                         ts_creator=frappe.get_doc({
                             "doctype":"Journal Entry",
                             "company":document.company,
+                            "against_document":document.doctype,
+                            "against_document_number":document.name,
                             "ts_source_doctype_name":document.doctype,
                             "ts_purchase_receipt_invoice_no":document.name,
                             "posting_date":document.posting_date,
@@ -168,6 +174,8 @@ def creating_journal_entry(document,action):
                                 ts_creator=frappe.get_doc({
                                         "doctype":"Journal Entry",
                                         "company":document.company,
+                                        "against_document":document.doctype,
+                                        "against_document_number":document.name,
                                         "ts_source_doctype_name":document.doctype,
                                         "ts_purchase_receipt_invoice_no":document.name,
                                         "posting_date":document.posting_date,
