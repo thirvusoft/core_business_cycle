@@ -4,6 +4,8 @@ from core_business_cycle.core_business_cycle.utils.selling.sales_invoice.sales_i
 from core_business_cycle.core_business_cycle.utils.stock.stock_entry.stock_entry_custom_field import stock_entry_customization
 from core_business_cycle.core_business_cycle.utils.stock.stock_reconciliation.stock_reconciliation_custom_fields import stock_reconciliation_customization
 from core_business_cycle.core_business_cycle.utils.buying.purchase_invoice.purchase_invoice_custom_fields import purchase_invoice_customization
+from core_business_cycle.core_business_cycle.utils.account.journal_entry_custom_fields import  journal_entry_custom_fields
+
 def after_install():
     delivery_note_customization()
     purchase_receipt_customization()
@@ -11,3 +13,4 @@ def after_install():
     stock_entry_customization()
     stock_reconciliation_customization()
     purchase_invoice_customization()
+    journal_entry_custom_fields()
